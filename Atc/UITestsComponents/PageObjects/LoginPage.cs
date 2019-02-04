@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Atc.Attributes;
+using System;
 
 namespace UiTestsComponents.PageObjects
 {
@@ -24,6 +25,7 @@ namespace UiTestsComponents.PageObjects
         {
             _driver = driver;
             UrlAttribute.LoadPage(typeof(LoginPage), _driver);
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
             //FindByXPathAttribute.LoadPage(typeof(LoginPage), _driver);
         }
 

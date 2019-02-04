@@ -1,10 +1,7 @@
 ﻿using Atc;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace UITests
+namespace UiTests.Fixtures
 {
     [SetUpFixture]
     public abstract class DefaultFixture

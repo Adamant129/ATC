@@ -1,11 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using UITests;
 using UiTestsComponents.Models;
 
-namespace UiTests
+namespace UiTests.Fixtures
 {
     [TestFixture]
     public class UiTestsFixture : DefaultFixture
