@@ -2,42 +2,29 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using UITestsComponents.Models;
+using UITests;
+using UiTestsComponents.Models;
 
-namespace UITests
+namespace UiTests
 {
     [TestFixture]
-    public class UITestsFixture : DefaultFixture
+    public class UiTestsFixture : DefaultFixture
     {
         protected UserModel User { get; set; }
-        protected IWebDriver Driver { get; set; }
 
-        protected AppConfiguration Conf { get; set; }
-        protected IConfiguration Configuration { get; set; }
-
-        public UITestsFixture()
-        {
-            //User = _user ;
-            //Driver = _driver;
-            //Configuration = _configuration;
-        }
+        protected static AppConfiguration Conf { get; set; }
 
         [SetUp]
         public void SetUp()
         {
-            Driver = new ChromeDriver();
-            Configuration = new ConfigurationBuilder()
-                .AddJsonFile("Atc.json", false, true)
-                //.AddJsonFile($"Atc.{environment}.json", false, true)
-                .Build();
-
-            Conf = Configuration.GetValue<AppConfiguration>(nameof(AppConfiguration));            
+            Conf = AtcBuilder
+                .Configuration.GetSection(nameof(AppConfiguration)).Get<AppConfiguration>();            
         }
 
         [TearDown]
         public void TearDown()
         {
-            Driver.Dispose();
+            AtcBuilder.Driver.Dispose();
         }
     }
 }

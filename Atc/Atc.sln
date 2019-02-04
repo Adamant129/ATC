@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atc", "Atc\Atc.csproj", "{98B41484-D0F7-4CAA-8F70-085C61C94F80}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UITests", "UITests\UITests.csproj", "{10FA0EEB-E396-4D9D-87DA-6436ABB3EB8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UiTests", "UiTests\UiTests.csproj", "{10FA0EEB-E396-4D9D-87DA-6436ABB3EB8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTests", "ApiTests\ApiTests.csproj", "{937D3985-B0FC-4E41-A60C-2D6C86CE5BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITestsComponents", "UITestsComponents\UITestsComponents.csproj", "{0FDF7653-47A2-4B33-A14C-8FBDB3017DB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UiTestsComponents", "UiTestsComponents\UiTestsComponents.csproj", "{0FDF7653-47A2-4B33-A14C-8FBDB3017DB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
