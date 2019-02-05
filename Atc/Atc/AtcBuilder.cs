@@ -3,13 +3,12 @@ using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using System;
 using System.IO;
-using System.Runtime.CompilerServices;
 using RestSharp;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
+using System.Text;
 
 namespace Atc
 {
@@ -20,10 +19,11 @@ namespace Atc
             CurrentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
         }
 
+        private static DirectoryInfo CurrentDirectory;
+
         public static IConfiguration Configuration { get; set; }
         public static Logger Log { get; set; }
         public static IWebDriver Driver { get; set; }
-        public static DirectoryInfo CurrentDirectory;
         public static RestClient RestClient { get; set; }
 
         public static void AddJsonConfiguration()
@@ -59,7 +59,11 @@ namespace Atc
 
         public static void AddRestClient()
         {
-
+            RestClient = new RestClient
+            {
+                Timeout = System.Convert.ToInt32(System.TimeSpan.FromMinutes(3).TotalMilliseconds),
+                Encoding = Encoding.UTF8
+            };
         }
     }
 }

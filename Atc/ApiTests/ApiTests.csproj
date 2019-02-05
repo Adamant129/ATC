@@ -5,12 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiTestsComponents\ApiTestsComponents.csproj" />
     <ProjectReference Include="..\ATC\Atc.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fixtures\" />
-    <Folder Include="Tests\" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Atc.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

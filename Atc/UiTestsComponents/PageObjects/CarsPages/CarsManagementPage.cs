@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using NUnit.Framework;
 using OpenQA.Selenium;
+using FluentAssertions;
 
 namespace UiTestsComponents.PageObjects.CarsPages
 {
@@ -30,7 +30,7 @@ namespace UiTestsComponents.PageObjects.CarsPages
         public CarsManagementPage CheckCarCreated(string carName)
         {
             _carsNames = _driver.FindElements(By.XPath("//table//tr/td[5]/a"));
-            Assert.True(_carsNames.Any(p => p.Text == carName));
+            _carsNames.Select(p => p).Should().Contain(carName);
 
             return this;
         } 
