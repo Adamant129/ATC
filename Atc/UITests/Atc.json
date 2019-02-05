@@ -1,3 +1,9 @@
 {
-  "driver": ""
+  "appConfiguration": {
+    "baseUrl": "https://www.phptravels.net/admin",
+    "userModel": {
+      "userName": "admin@phptravels.com",
+      "password": "demoadmin"
+    }
+  }
 }

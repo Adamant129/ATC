@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UITestsComponents.Models
+namespace UiTestsComponents.Models
 {
     public class UserModel
     {

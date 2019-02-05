@@ -8,4 +8,9 @@
     <ProjectReference Include="..\ATC\Atc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fixtures\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
+
 </Project>

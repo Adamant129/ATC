@@ -1,4 +1,4 @@
-﻿namespace UITestsComponents.Models
+﻿namespace UiTestsComponents.Models
 {
     public class AppConfiguration
     {

@@ -3,45 +3,63 @@ using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using System.Collections.Generic;
 using System;
+using System.IO;
+using System.Runtime.CompilerServices;
+using RestSharp;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace Atc
 {
-    public class AtcBuilder
+    public static class AtcBuilder
     {
-        public IConfiguration Configuration { get; set; }
+        static AtcBuilder()
+        {
+            CurrentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
+        }
 
-        public IWebDriver Driver { get; set; }
+        public static IConfiguration Configuration { get; set; }
+        public static Logger Log { get; set; }
+        public static IWebDriver Driver { get; set; }
+        public static DirectoryInfo CurrentDirectory;
+        public static RestClient RestClient { get; set; }
 
-        public virtual AtcBuilder AddJsonConfiguration()
+        public static void AddJsonConfiguration()
         {
             Configuration = new ConfigurationBuilder()
                 .AddJsonFile("Atc.json", false, true)
-                //.AddJsonFile($"Atc.{environment}.json", false, true)
                 .Build();
-
-            return this;
         }
 
-        public virtual AtcBuilder AddDriver(BrowserDriver driver = BrowserDriver.GoogleChrome)
+        public static void AddDriver(BrowserDriver driver = BrowserDriver.GoogleChrome)
         {
             switch(driver)
             {
                 case BrowserDriver.GoogleChrome:
-                    Driver = new ChromeDriver();
+                    Driver = new ChromeDriver(CurrentDirectory.FullName);
                     break;
                 case BrowserDriver.FireFox:
-                    Driver = new FirefoxDriver();
+                    Driver = new FirefoxDriver(CurrentDirectory.FullName);
                     break;
             }
-
-            return this;
         }
 
-        public virtual AtcBuilder AddLogging()
+        public static void AddLogging(string logsPath = "Logs")
         {
-            return this;
+            string loggingDirectory = Path.Combine(CurrentDirectory.FullName, logsPath);
+
+            Log = new LoggerConfiguration()
+                .WriteTo.File(Path.Combine(loggingDirectory, "debug.log"), LogEventLevel.Debug)
+                .WriteTo.File(Path.Combine(loggingDirectory, "info.log"), LogEventLevel.Information)
+                .WriteTo.File(Path.Combine(loggingDirectory, "errors.log"), LogEventLevel.Error)
+                .CreateLogger();
+        }
+
+        public static void AddRestClient()
+        {
+
         }
     }
 }
