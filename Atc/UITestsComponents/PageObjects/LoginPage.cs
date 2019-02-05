@@ -9,23 +9,17 @@ namespace UiTestsComponents.PageObjects
     [Url("https://www.phptravels.net/admin")]
     public class LoginPage
     {
+        private IWebDriver _driver;
+
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
             UrlAttribute.LoadPage(typeof(LoginPage), _driver);
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
-            //FindByXPathAttribute.LoadPage(typeof(LoginPage), _driver);
         }
 
-        private IWebDriver _driver;
-
-        //[FindByXPath("//input[@placeholder='Email']")]
         private IWebElement _userNameInput;
-
-        //[FindByXPath("input[@placeholder='Password']")]
         private IWebElement _userPasswordInput;
-
-        //[FindByXPath("button[@type='submit']")]
         private IWebElement _login;
 
         public MainPage Login(string userName, string password)

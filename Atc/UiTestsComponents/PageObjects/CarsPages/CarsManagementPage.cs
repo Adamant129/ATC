@@ -10,14 +10,15 @@ namespace UiTestsComponents.PageObjects.CarsPages
 {
     public class CarsManagementPage
     {
-        private IWebElement _addNewCarButton;
-        private IReadOnlyCollection<IWebElement> _carsNames;
         private IWebDriver _driver;
 
         public CarsManagementPage(IWebDriver driver)
         {
             _driver = driver;
         }
+
+        private IWebElement _addNewCarButton;
+        private IReadOnlyCollection<IWebElement> _carsNames;
 
         public AddNewCarPage AddNewCar()
         {

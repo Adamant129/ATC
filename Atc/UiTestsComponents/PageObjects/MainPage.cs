@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using UiTestsComponents.PageObjects.CarsPages;
+using UiTestsComponents.PageObjects.HotelsPages;
 
 namespace UiTestsComponents.PageObjects
 {
@@ -9,6 +10,8 @@ namespace UiTestsComponents.PageObjects
         private IWebDriver _driver;
         private IWebElement _carsDropDown;
         private IWebElement _carsManagementLink;
+        private IWebElement _hotelsDropDown;
+        private IWebElement _hotelsManagementLink;
 
         public MainPage(IWebDriver driver)
         {
@@ -25,6 +28,17 @@ namespace UiTestsComponents.PageObjects
             _carsManagementLink.Click();
 
             return new CarsManagementPage(_driver);
+        }
+
+        public HotelsPage ManageHotels()
+        {
+            _hotelsDropDown = _driver.FindElement(By.XPath("//a[@href='#Hotels']"));
+            _hotelsDropDown.Click();
+
+            _hotelsManagementLink = _driver.FindElement(By.XPath("//a[text()='Hotels']"));
+            _hotelsManagementLink.Click();
+
+            return new HotelsPage(_driver);
         }
     }
 }
