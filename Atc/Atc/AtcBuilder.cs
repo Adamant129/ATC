@@ -6,6 +6,7 @@ using OpenQA.Selenium.Firefox;
 using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using RestSharp;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -23,6 +24,7 @@ namespace Atc
         public static Logger Log { get; set; }
         public static IWebDriver Driver { get; set; }
         public static DirectoryInfo CurrentDirectory;
+        public static RestClient RestClient { get; set; }
 
         public static void AddJsonConfiguration()
         {
@@ -53,6 +55,11 @@ namespace Atc
                 .WriteTo.File(Path.Combine(loggingDirectory, "info.log"), LogEventLevel.Information)
                 .WriteTo.File(Path.Combine(loggingDirectory, "errors.log"), LogEventLevel.Error)
                 .CreateLogger();
+        }
+
+        public static void AddRestClient()
+        {
+
         }
     }
 }
