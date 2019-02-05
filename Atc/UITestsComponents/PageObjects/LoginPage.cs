@@ -2,7 +2,6 @@
 using Atc.Attributes;
 using System;
 using Atc;
-using Serilog;
 
 namespace UiTestsComponents.PageObjects
 {

@@ -16,10 +16,10 @@ namespace UiTests.Tests
             try
             {
                 new MainPage(AtcBuilder.Driver)
-                .ManageCars()
-                .AddNewCar()
-                .CreateNewCar(newCarName)
-                .CheckCarCreated(newCarName);
+                    .ManageCars()
+                    .AddNewCar()
+                    .CreateNewCar(newCarName)
+                    .CheckCarCreated(newCarName);
             }
             catch (Exception ex)
             {
@@ -27,42 +27,19 @@ namespace UiTests.Tests
             }
         }
 
-        //[Test]
-        //public void CreateNewCar()
-        //{
-        //    var newCarName = "Toyota Forza x6";
-
-        //    try
-        //    {
-        //        new MainPage(AtcBuilder.Driver)
-        //        .ManageCars()
-        //        .AddNewCar()
-        //        .CreateNewCar(newCarName)
-        //        .CheckCarCreated(newCarName);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        AtcBuilder.Log.Error(ex.Message);
-        //    }
-        //}
-
-        //[Test]
-        //public void CreateNewCar()
-        //{
-        //    var newCarName = "Toyota Forza x6";
-
-        //    try
-        //    {
-        //        new MainPage(AtcBuilder.Driver)
-        //        .ManageCars()
-        //        .AddNewCar()
-        //        .CreateNewCar(newCarName)
-        //        .CheckCarCreated(newCarName);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        AtcBuilder.Log.Error(ex.Message);
-        //    }
-        //}
+        [Test]
+        public void CheckHotelsPagination()
+        {
+            try
+            {
+                new MainPage(AtcBuilder.Driver)
+                    .ManageHotels()
+                    .PaginateHotels(25);
+            }
+            catch (Exception ex)
+            {
+                AtcBuilder.Log.Error(ex.Message);
+            }
+        }
     }
 }

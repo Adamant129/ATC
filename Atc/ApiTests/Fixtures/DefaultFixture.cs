@@ -16,7 +16,8 @@ namespace ApiTests.Fixtures
 
         [OneTimeTearDown]
         public virtual void OneTimeTearDown()
-        {            
+        {     
+            AtcBuilder.Driver.Dispose();
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace UiTestsComponents.Models
+﻿namespace UiTestsComponents.Models
 {
     public class UserModel
     {

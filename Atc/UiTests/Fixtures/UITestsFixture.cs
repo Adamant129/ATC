@@ -26,7 +26,7 @@ namespace UiTests.Fixtures
         [TearDown]
         public void TearDown()
         {
-            AtcBuilder.Driver.Dispose();
+            new MainPage(AtcBuilder.Driver).LogOut();
         }
     }
 }
