@@ -27,14 +27,15 @@ namespace UiTests.Tests
             }
         }
 
-        [Test]
-        public void CheckHotelsPagination()
+        [TestCase(25)]
+        [TestCase(50)]
+        public void CheckHotelsPagination(int amount)
         {
             try
             {
                 new MainPage(AtcBuilder.Driver)
                     .ManageHotels()
-                    .PaginateHotels(25);
+                    .PaginateHotels(amount);
             }
             catch (Exception ex)
             {
