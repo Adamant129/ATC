@@ -1,20 +1,32 @@
-﻿using NUnit.Framework;
+﻿using System;
+using Atc;
+using NUnit.Framework;
+using Serilog;
 using UiTests.Fixtures;
 using UiTestsComponents.PageObjects;
+using UiTestsComponents.PageObjects.CarsPages;
 
 namespace UiTests.Tests
 {
     public class Tests : UiTestsFixture
     {
         [Test]
-        public void Test1()
+        public void CreateNewCar()
         {
-            new LoginPage(AtcBuilder.Driver)
+            var newCarName = "Toyota Forza x6";
+
+            try
             {
-                Password = Conf.UserModel.Password,
-                UserName = Conf.UserModel.UserName
-            }.Login().ManageCars();
-            
+                new MainPage(AtcBuilder.Driver)
+                .ManageCars()
+                .AddNewCar()
+                .CreateNewCar(newCarName)
+                .CheckCarCreated(newCarName);
+            }
+            catch (Exception ex)
+            {
+                AtcBuilder.Log.Error(ex.Message);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Atc;
+using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using UiTestsComponents.Models;
+using UiTestsComponents.PageObjects;
 
 namespace UiTests.Fixtures
 {
@@ -15,7 +17,10 @@ namespace UiTests.Fixtures
         public void SetUp()
         {
             Conf = AtcBuilder
-                .Configuration.GetSection(nameof(AppConfiguration)).Get<AppConfiguration>();            
+                .Configuration.GetSection(nameof(AppConfiguration)).Get<AppConfiguration>();
+
+            new LoginPage(AtcBuilder.Driver)
+                .Login(Conf.UserModel.UserName, Conf.UserModel.Password);
         }
 
         [TearDown]

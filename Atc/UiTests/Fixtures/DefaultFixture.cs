@@ -6,15 +6,12 @@ namespace UiTests.Fixtures
     [SetUpFixture]
     public abstract class DefaultFixture
     {
-        protected static AtcBuilder AtcBuilder { get; set; } 
-
         [OneTimeSetUp]
         public virtual void OneTimeSetUp()
         {
-            AtcBuilder = new AtcBuilder()
-                .AddJsonConfiguration()
-                .AddDriver()
-                .AddLogging();
+            AtcBuilder.AddJsonConfiguration();
+            AtcBuilder.AddDriver();
+            AtcBuilder.AddLogging();
         }
 
         [OneTimeTearDown]
